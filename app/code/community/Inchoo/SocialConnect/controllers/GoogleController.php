@@ -76,13 +76,22 @@ class Inchoo_SocialConnect_GoogleController extends Inchoo_SocialConnect_Control
         }
 
         if ($code) {
+
+
             // Google API green light - proceed
+            $redirectUrl = Mage::getSingleton('core/session')->getSocialRedirectUrl();
+            if($redirectUrl){
+                $redirectUrl = $redirectUrl.'?code='.$code;
+                $response = $this->getResponse();
+                $response->setRedirect($redirectUrl);
+                $response->sendResponse();
+                exit;
+            }
 
             $info = Mage::getModel('inchoo_socialconnect/google_info')->load();
             /* @var $info Inchoo_SocialConnect_Model_Google_Info */
 
             $token = $info->getClient()->getAccessToken();
-
             $customersByGoogleId = Mage::helper('inchoo_socialconnect/google')
                 ->getCustomersByGoogleId($info->getId());
 
