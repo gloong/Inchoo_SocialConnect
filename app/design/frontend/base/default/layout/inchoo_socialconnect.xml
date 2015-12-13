@@ -67,7 +67,11 @@
                 <name>inchoo_socialconnect/css/styles.css</name>
             </action>
         </reference>
+
         <reference name="customer_form_login">
+            <action method="setTemplate">
+                <template>inchoo/socialconnect/persistent/login.phtml</template>
+            </action>
             <block type="inchoo_socialconnect/login" name="inchoo_socialconnect_login">
                 <block type="inchoo_socialconnect/google_button" name="inchoo_socialconnect_google_login_button"/>
                 <block type="inchoo_socialconnect/facebook_button" name="inchoo_socialconnect_facebook_login_button"/>
