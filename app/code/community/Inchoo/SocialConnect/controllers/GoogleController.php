@@ -84,6 +84,7 @@ class Inchoo_SocialConnect_GoogleController extends Inchoo_SocialConnect_Control
                 $redirectUrl = $redirectUrl.'?code='.$code;
                 $response = $this->getResponse();
                 $response->setRedirect($redirectUrl);
+                Mage::getSingleton('core/session')->setSocialRedirectUrl(null);
                 $response->sendResponse();
                 exit;
             }
