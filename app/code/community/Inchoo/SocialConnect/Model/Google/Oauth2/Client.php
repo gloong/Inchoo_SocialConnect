@@ -52,6 +52,7 @@ class Inchoo_SocialConnect_Model_Google_Oauth2_Client
     protected $scope = array(
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/contacts.readonly'
     );
     protected $access = 'offline';
     protected $prompt = 'auto';
@@ -174,7 +175,7 @@ class Inchoo_SocialConnect_Model_Google_Oauth2_Client
         return $url;
     }
 
-    public function api($endpoint, $method = 'GET', $params = array())
+    public function api($endpoint, $method = 'GET', $params = array(),$full=false)
     {
         if(empty($this->token)) {
             $this->fetchAccessToken();
@@ -182,7 +183,11 @@ class Inchoo_SocialConnect_Model_Google_Oauth2_Client
             $this->refreshAccessToken();
         }
 
-        $url = self::OAUTH2_SERVICE_URI.$endpoint;
+        if($full===false){
+            $url = self::OAUTH2_SERVICE_URI.$endpoint;
+        }else{
+            $url = $endpoint;
+        }
 
         $method = strtoupper($method);
 
