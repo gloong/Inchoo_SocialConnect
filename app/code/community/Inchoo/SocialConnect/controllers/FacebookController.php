@@ -64,7 +64,6 @@ class Inchoo_SocialConnect_FacebookController extends Inchoo_SocialConnect_Contr
                     ->addNotice(
                         $this->__('Facebook Connect process aborted.')
                     );
-
                 return $this;
             }
 
