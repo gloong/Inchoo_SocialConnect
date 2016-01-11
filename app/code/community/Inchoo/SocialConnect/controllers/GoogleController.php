@@ -81,7 +81,7 @@ class Inchoo_SocialConnect_GoogleController extends Inchoo_SocialConnect_Control
             // Google API green light - proceed
             $redirectUrl = Mage::getSingleton('core/session')->getSocialRedirectUrl();
             if($redirectUrl){
-                $redirectUrl = $redirectUrl.'?code='.$code;
+                $redirectUrl = $redirectUrl.'?code='.$code."&channel=gmail";
                 $response = $this->getResponse();
                 $response->setRedirect($redirectUrl);
                 Mage::getSingleton('core/session')->setSocialRedirectUrl(null);
