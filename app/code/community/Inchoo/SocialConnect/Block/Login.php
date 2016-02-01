@@ -73,7 +73,7 @@ class Inchoo_SocialConnect_Block_Login extends Mage_Core_Block_Template
             $this->numEnabled++;
         }
 
-        Mage::register('inchoo_socialconnect_button_text', $this->__('Login or Signup'), true);
+        Mage::register('inchoo_socialconnect_button_text', $this->__('Signup or Login'), true);
 
         $this->setTemplate('inchoo/socialconnect/login.phtml');
     }
